@@ -11,3 +11,7 @@ A free to use Tamil Corpus software developed by Indian Linux User Group Chennai
 == Licence
 
 Released under GNU GPL V3
+
+== Current Goals
+
+https://goinggnu.wordpress.com/2013/03/14/requirements-for-creating-a-free-corpus-for-tamil-language/
