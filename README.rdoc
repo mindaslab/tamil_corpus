@@ -1,0 +1,13 @@
+== Tamil Corpus
+
+A free to use Tamil Corpus software developed by Indian Linux User Group Chennai.
+
+== What it uses
+
+* Ruby 1.9.3
+* Rails 3.2.13
+* Database Indepent (Cannot gurantee it always)
+
+== Licence
+
+Released under GNU GPL V3
