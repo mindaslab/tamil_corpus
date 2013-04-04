@@ -1,4 +1,10 @@
 TamilCorpus::Application.routes.draw do
+  resources :tags
+
+
+  resources :words
+
+
   get "corpus/index"
 
   # The priority is based upon order of creation:

@@ -1,0 +1,19 @@
+%h1 Listing words
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @words.each do |word|
+    %tr
+      %td= word.name
+      %td= link_to 'Show', word
+      %td= link_to 'Edit', edit_word_path(word)
+      %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Word', new_word_path
