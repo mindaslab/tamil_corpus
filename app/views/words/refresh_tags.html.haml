@@ -14,10 +14,8 @@
           $.post("/words/"+word_id+"/untag",
           {
             tag_id: tag_id
-          },
-          function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
           });
+          $('#tags .untags').load("/words/"+word_id+"/refresh_untags");
           $this.parent().remove();
       }
   });

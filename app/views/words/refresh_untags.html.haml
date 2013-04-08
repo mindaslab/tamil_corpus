@@ -11,10 +11,8 @@
           $.post("/words/"+word_id+"/tag",
           {
             tag_id: tag_id
-          },
-          function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
           });
+          $('#tags .tags').load("/words/"+word_id+"/refresh_tags");
           $this.parent().remove();
       } else {
           // the checkbox was unchecked
