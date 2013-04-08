@@ -1,9 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @word.name
+%h1= @word.name
+%p.wod-actions
+  = link_to "Edit", edit_word_path(@word), class: "btn btn-primary"
+  = link_to "Delete", @word, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-primary"
+  = link_to "Lock It", "#" if @word.locked
+  = link_to "Unlock It, "#" unles @word.locked
 
-= link_to 'Edit', edit_word_path(@word)
-\|
-= link_to 'Back', words_path
+#tags
+  .added-tags
+  .new-tags= render @tags

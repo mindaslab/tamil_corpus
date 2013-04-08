@@ -12,6 +12,9 @@ TamilCorpus::Application.routes.draw do
     collection do
       get 'import'
       post 'file_processor'
+      get 'tagged'
+      get 'untagged'
+      get 'locked'
     end
   end
 

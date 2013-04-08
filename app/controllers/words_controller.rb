@@ -3,7 +3,7 @@ class WordsController < ApplicationController
   # GET /words.json
   def index
     @words = Word.all
-
+    @heeading = "All Words"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @words }
@@ -14,7 +14,7 @@ class WordsController < ApplicationController
   # GET /words/1.json
   def show
     @word = Word.find(params[:id])
-
+    @tags = Tag.order(:name)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @word }
@@ -79,5 +79,23 @@ class WordsController < ApplicationController
       format.html { redirect_to words_url }
       format.json { head :no_content }
     end
+  end
+  
+  def tagged
+    @words = Word.where(tagged: true)
+    @heading = "Tagged Words" 
+    render :index 
+  end
+  
+  def untagged
+    @words = Word.where(tagged: false)
+    @heading = "Untagged Words"
+    render :index
+  end
+  
+  def locked
+    @words = Word.where(locked: true)
+    @heading = "Locked Words"
+    render :index
   end
 end

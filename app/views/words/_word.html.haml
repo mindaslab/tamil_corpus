@@ -1,0 +1,4 @@
+= link_to word.name, word
+= link_to raw('<i class="icon-pencil"></i>'), edit_word_path(word)
+= link_to raw('<i class="icon-trash"></i>'), word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

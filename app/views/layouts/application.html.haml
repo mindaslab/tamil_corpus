@@ -25,12 +25,13 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") TamilCorpus
+          %a.brand(href="#") சொற்கண்டு
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "All Words", words_path
+              %li= link_to "Untagged Words", {action: :untagged, controller: :words}
+              %li= link_to "Tagged Words", {action: :tagged, controller: :words}
+              %li= link_to "Locked Words", {action: :locked, controller: :words}
 
     .container-fluid
 
