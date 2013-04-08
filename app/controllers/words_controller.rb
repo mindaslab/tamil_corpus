@@ -14,7 +14,8 @@ class WordsController < ApplicationController
   # GET /words/1.json
   def show
     @word = Word.find(params[:id])
-    @tags = Tag.order(:name)
+    @tags = @word.tags.order(:name)
+    @untags = Tag.order(:name) - @tags
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @word }
@@ -97,5 +98,29 @@ class WordsController < ApplicationController
     @words = Word.where(locked: true)
     @heading = "Locked Words"
     render :index
+  end
+  
+  def tag
+    tag = Tag.find(params[:tag_id])
+    word = Word.find(params[:id])
+    word.tags << tag
+    word.tagged = true
+    word.save
+    @untags = Tag.order(:name) - word.tags
+    respond_to do |format|
+      format.js{}
+    end
+  end
+  
+  def untag
+    tag = Tag.find(params[:tag_id])
+    word = Word.find(params[:id])
+    word.tags.delete tag
+    word.tagged = false if word.tags.count == 0 
+    word.save
+    @tags = word.tags
+    respond_to do |format|
+      format.js{}
+    end
   end
 end

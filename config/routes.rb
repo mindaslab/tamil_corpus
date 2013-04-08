@@ -16,6 +16,11 @@ TamilCorpus::Application.routes.draw do
       get 'untagged'
       get 'locked'
     end
+    
+    member do
+      post "tag"
+      post "untag"
+    end
   end
 
 

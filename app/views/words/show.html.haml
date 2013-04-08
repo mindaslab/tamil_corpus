@@ -8,6 +8,6 @@
   = link_to "Unlock It", "#", class: "btn btn-primary" if @word.locked
 
 #tags
-  .added-tags
-  .new-tags
-    %ul= render @tags
+  = render partial: 'word_id'
+  .tags= render partial: 'tags'
+  .untags= render partial: 'untags'
