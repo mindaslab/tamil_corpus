@@ -43,4 +43,5 @@ gem "twitter-bootstrap-rails"
 
 gem 'devise'
 
+gem 'activeadmin'
 
