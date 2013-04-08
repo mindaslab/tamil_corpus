@@ -106,7 +106,7 @@ class WordsController < ApplicationController
     word.tags << tag
     word.tagged = true
     word.save
-    @untags = Tag.order(:name) - word.tags
+    # @untags = Tag.order(:name) - word.tags
     respond_to do |format|
       format.js{}
     end
@@ -118,9 +118,19 @@ class WordsController < ApplicationController
     word.tags.delete tag
     word.tagged = false if word.tags.count == 0 
     word.save
-    @tags = word.tags
+    # @tags = word.tags
     respond_to do |format|
       format.js{}
     end
+  end
+  
+  def refresh_tags
+    @tags = Word.find(params[:id]).tags.order(:name)
+    render layout: 'none'
+  end
+  
+  def refresh_untags
+    @untags = Tag.order(:name) - Word.find(params[:id]).tags
+    render layout: 'none'
   end
 end

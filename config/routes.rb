@@ -20,6 +20,8 @@ TamilCorpus::Application.routes.draw do
     member do
       post "tag"
       post "untag"
+      get "refresh_tags"
+      get "refresh_untags"
     end
   end
 
