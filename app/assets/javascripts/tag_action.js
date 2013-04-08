@@ -4,6 +4,7 @@ $('#tags :checkbox').click(function() {
     if ($this.is(':checked')) {
         // the checkbox was checked 
         alert($this.attr('id').match(/\d+/g));
+        $this.parent().remove();
     } else {
         // the checkbox was unchecked
     }

@@ -4,9 +4,10 @@
 %p.wod-actions
   = link_to "Edit", edit_word_path(@word), class: "btn btn-primary"
   = link_to "Delete", @word, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-primary"
-  = link_to "Lock It", "#" if @word.locked
-  = link_to "Unlock It, "#" unles @word.locked
+  = link_to "Lock It", "#", class: "btn btn-primary" unless @word.locked
+  = link_to "Unlock It", "#", class: "btn btn-primary" if @word.locked
 
 #tags
   .added-tags
-  .new-tags= render @tags
+  .new-tags
+    %ul= render @tags
