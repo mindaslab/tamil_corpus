@@ -4,7 +4,12 @@ TamilCorpus::Application.routes.draw do
   resources :tags
 
 
-  resources :words
+  resources :words do
+    collection do
+      get 'import'
+      post 'file_processor'
+    end
+  end
 
 
   get "corpus/index"
