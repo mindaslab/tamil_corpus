@@ -22,6 +22,8 @@ TamilCorpus::Application.routes.draw do
       post "untag"
       get "refresh_tags"
       get "refresh_untags"
+      get "lock_it"
+      get "unlock_it"
     end
   end
 

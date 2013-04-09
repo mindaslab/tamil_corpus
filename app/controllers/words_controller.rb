@@ -133,4 +133,18 @@ class WordsController < ApplicationController
     @untags = Tag.order(:name) - Word.find(params[:id]).tags
     render layout: 'none'
   end
+  
+  def lock_it
+    word = Word.find(params[:id])
+    word.locked = true
+    word.save
+    redirect_to word, notice: "Word has been locked"
+  end
+  
+  def unlock_it
+    word = Word.find(params[:id])
+    word.locked = false
+    word.save
+    redirect_to word, notice: "Word has ben unlocked"
+  end
 end
