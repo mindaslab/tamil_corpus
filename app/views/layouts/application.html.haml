@@ -33,6 +33,11 @@
               %li= link_to "Untagged Words", untagged_words_path
               %li= link_to "Tagged Words", tagged_words_path
               %li= link_to "Locked Words", locked_words_path
+            .pull-right
+              -if user_signed_in?
+                = link_to "Logout", destroy_user_session_path, class: "btn", method: :delete
+              -else
+                = link_to "Login", new_user_session_path, class: "btn"  
 
     .container-fluid
 
