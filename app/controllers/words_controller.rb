@@ -155,7 +155,6 @@ class WordsController < ApplicationController
   private
   
   def user_must_be_admin
-    word = Word.find(params[:id])
-    redirect_to word, notice: "You must be admin to perform this task" unless current_user.admin?
+    redirect_to words_path, notice: "You must be admin to perform this task" unless current_user.admin?
   end
 end
