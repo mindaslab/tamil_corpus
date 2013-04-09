@@ -1,4 +1,8 @@
 class WordsController < ApplicationController
+
+  before_filter :authenticate_user!, except: [:index, :tagged, :untagged, :locked] 
+  before_filter :user_must_be_admin, only: [:new, :edit, :create, :update, :destoy, :lock_it, :unlock_it]
+  
   # GET /words
   # GET /words.json
   def index
@@ -126,12 +130,12 @@ class WordsController < ApplicationController
   
   def refresh_tags
     @tags = Word.find(params[:id]).tags.order(:name)
-    render layout: 'none'
+    render layout: false
   end
   
   def refresh_untags
     @untags = Tag.order(:name) - Word.find(params[:id]).tags
-    render layout: 'none'
+    render layout: false
   end
   
   def lock_it
@@ -146,5 +150,12 @@ class WordsController < ApplicationController
     word.locked = false
     word.save
     redirect_to word, notice: "Word has ben unlocked"
+  end
+  
+  private
+  
+  def user_must_be_admin
+    word = Word.find(params[:id])
+    redirect_to word, notice: "You must be admin to perform this task" unless current_user.admin?
   end
 end

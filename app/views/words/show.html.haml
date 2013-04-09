@@ -9,5 +9,9 @@
 
 #tags
   = render partial: 'word_id'
-  .tags= render partial: 'tags'
-  .untags= render partial: 'untags'
+  .row-fluid
+    .span6
+      .tags= render partial: 'tags'
+    .span6
+      .untags= render partial: 'untags'
+
