@@ -15,6 +15,8 @@ TamilCorpus::Application.routes.draw do
       get 'tagged'
       get 'untagged'
       get 'locked'
+      get 'file_upload'
+      post 'file_process'
     end
     
     member do

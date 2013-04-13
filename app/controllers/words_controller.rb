@@ -152,6 +152,18 @@ class WordsController < ApplicationController
     redirect_to word, notice: "Word has ben unlocked"
   end
   
+  def file_upload
+  end
+  
+  def file_process
+    file = params[:file].read
+    words = file.split /,/
+    for word in words
+      Word.find_or_create_by_name word.strip
+    end
+    redirect_to :words_path, notice: "Hopefully file has been processed right"
+  end
+  
   private
   
   def user_must_be_admin
